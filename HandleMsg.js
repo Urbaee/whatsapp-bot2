@@ -1534,6 +1534,22 @@ module.exports = HandleMsg = async (aruga, message) => {
 			break
 		
 		//Fun Menu
+            case 'spamcall':
+                if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+                if (args.length !== 1) return aruga.reply(from, `Untuk menggunakan fitur spamcall, ketik :\n${prefix}spamcall 8xxxxxxxxxx\n\nContoh: ${prefix}spamcall 81288888888`, id)
+                rugaapi.spamcall(args[0])
+                .then(async (res) => {
+                    await aruga.reply(from, `${res}`, id)
+                })
+                break
+            case 'spamcall2':
+                if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+                if (args.length !== 1) return aruga.reply(from, `Untuk menggunakan fitur spamcall, ketik :\n${prefix}spamcall 8xxxxxxxxxx\n\nContoh: ${prefix}spamcall 81288888888`, id)
+                rugaapi.spamcall2(args[0])
+                .then(async (res) => {
+                    await aruga.reply(from, `${res}`, id)
+                })
+                break 
         case 'klasemen':
 		case 'klasmen':
 			if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
@@ -2051,7 +2067,7 @@ _Desc di update oleh : @${chat.groupMetadata.descOwner.replace('@c.us','')} pada
 		
 		// Simi-simi function
 		if ((!isCmd && isGroupMsg && isSimi) && message.type === 'chat') {
-			axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${encodeURIComponent(message.body)}&apikey=${apiSimi}`)
+			axios.get(`https://st4rz.herokuapp.com/api/simsimi?kata=${encodeURIComponent(message.body)}`)
 			.then((res) => {
 				if (res.data.status == 403) return aruga.sendText(ownerNumber, `${res.data.result}\n\n${res.data.pesan}`)
 				aruga.reply(from, `Simi berkata: ${res.data.result}`, id)
