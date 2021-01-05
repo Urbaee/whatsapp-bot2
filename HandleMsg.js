@@ -1631,11 +1631,14 @@ case 'ytsearch':
       			})
 		      	break
 	     	case 'cersex':
-			      rugaapi.cersex()
-			      .then(async (res) => {
-			    	await aruga.reply(from, res.result, id)
-		      	})
-		      	break
+            await aruga.sendText(from, `Tunggu sebentar` , id)               
+            rugaapi.cersex()
+			.then(async ({ result }) => {
+                const asuu = `𝘊𝘦𝘳𝘪𝘵𝘢 sex~\n\nJudul : ${result.judul}\n${result.cerita}`
+                await aruga.sendFileFromUrl(from, result.image, 'asu.jpg' , asuu , id)
+	        console.log(`Cerita Sudah terkirim`)
+			})
+            break
 	    	case 'puisi':
 		      	rugaapi.puisi()
 		      	.then(async (res) => {
