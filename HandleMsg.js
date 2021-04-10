@@ -740,6 +740,28 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
                 let awikxs = hero[Math.floor(Math.random() * hero.length)]
                 aruga.sendFileFromUrl(from, `https://api.vhtear.com/logoff?hero=${awikxs}&text=${jadiin}&apikey=${vhtearkey}`, `${jadiin}.jpg`, 'nehh ngab...', id)
                 break
+			
+	case 'batik':
+        if(!q) return aruga.reply(from, `Ketik /batik teksnya` , id)
+        const bat = await axios.get(`https://videfikri.com/api/textmaker/modernbatik/?text=${q}`)
+        await aruga.reply(from , ind.wait(), id)
+        await aruga.sendFileFromUrl(from, bat.data.result.img , 'batik.jpg' , 'nih kak', id )
+        break
+			
+        case 'dragon':
+        if(!q) return aruga.reply(from, `Ketik /dragon teksnya` , id)
+        const bate = await axios.get(`https://videfikri.com/api/textmaker/dragonfire/?text=${q}`)
+        await aruga.reply(from , ind.wait(), id)
+        await aruga.sendFileFromUrl(from, bate.data.result.img , 'batik.jpg' , 'nih kak', id )
+        break
+			
+        case 'galaxy':
+        if(!q) return aruga.reply(from, `Ketik /galaxy teksnya` , id)
+        const batex = await axios.get(`https://videfikri.com/api/textmaker/guardiangalaxy/?text=${q}`)
+        await aruga.reply(from , ind.wait(), id)
+        await aruga.sendFileFromUrl(from, batex.data.result.img , 'batik.jpg' , 'nih kak', id )
+        break
+			
         case 'pornhub':
             if (args.length === 1) return aruga.reply(from, `Kirim perintah *${prefix}pornhub [ |Teks1|Teks2 ]*,\n\n contoh : *${prefix}pornhub |Dimas| HUB*`, id)
             argz = body.trim().split('|')
